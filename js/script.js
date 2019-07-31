@@ -1,13 +1,6 @@
-var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomNumber, playerInput;
-
-/**
- * Describe this function...
- */
 
 
-
-var argButtonName, buttonRock, buttonPaper,buttonScissors;
-var ResultPlayer=0,ResultComputer=0;
+let ResultPlayer=0,ResultComputer=0;
 
 /**
  * Describe this function...
@@ -40,8 +33,8 @@ function buttonClicked(argButtonName) {
    * Describe this function...
    */
   function displayResult(argPlayerMove, argComputerMove) {
-    var TemporaryResultPlayer=0;
-    var TemporaryResultComputer=0;
+   let TemporaryResultPlayer=0;
+    let TemporaryResultComputer=0;
     console.log('wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
     if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
       printMessage('wygrywasz!');
@@ -70,25 +63,25 @@ function buttonClicked(argButtonName) {
   }
  
   
-  playerMove = argButtonName;
-  var result= ResultPlayer +'-'+ ResultComputer;
+  const playerMove = argButtonName;
+ const result= ResultPlayer +'-'+ ResultComputer;
   document.getElementById('result').innerHTML=result;
 
 
-  randomNumber = Math.floor(Math.random() * 3 + 1);
+  const randomNumber = Math.floor(Math.random() * 3 + 1);
   console.log('wylosowana liczba to: ' + randomNumber);
-  computerMove = getMoveName(randomNumber);
+ const computerMove = getMoveName(randomNumber);
   console.log('ruch komputera to: ' + computerMove);
   displayResult(playerMove, computerMove);
   //////////////
 }
 
 
-buttonRock = document.getElementById('button-rock');
+const buttonRock = document.getElementById('button-rock');
 buttonRock.addEventListener('click', function(){ buttonClicked('kamień'); });
 
-buttonPaper=document.getElementById('button-paper');
+const buttonPaper=document.getElementById('button-paper');
 buttonPaper.addEventListener('click',function(){buttonClicked('papier');});
 
-buttonScissors = document.getElementById('button-scissors');
+const buttonScissors = document.getElementById('button-scissors');
 buttonScissors.addEventListener('click',function(){buttonClicked('nozyce');});
