@@ -7,11 +7,13 @@ var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomN
 
 
 var argButtonName, buttonRock, buttonPaper,buttonScissors;
+var ResultPlayer=0,ResultComputer=0;
 
 /**
  * Describe this function...
  */
 function buttonClicked(argButtonName) {
+    
   clearMessages();
   console.log(argButtonName + ' został kliknięty');
   ////////////////
@@ -38,15 +40,20 @@ function buttonClicked(argButtonName) {
    * Describe this function...
    */
   function displayResult(argPlayerMove, argComputerMove) {
+    var TemporaryResultPlayer=0;
+    var TemporaryResultComputer=0;
     console.log('wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
     if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
       printMessage('wygrywasz!');
+      TemporaryResultPlayer=1;
     } 
     else if(argPlayerMove == 'nożyce' && argComputerMove == 'papier') {
       printMessage('wygrywasz');
+      TemporaryResultPlayer=1;
     }
     else if (argPlayerMove == 'kamień' && argComputerMove == 'nożyce'){
       printMessage('wygrywasz!');
+      TemporaryResultPlayer=1;
     }
     else if (argPlayerMove == argComputerMove)
     {
@@ -54,11 +61,20 @@ function buttonClicked(argButtonName) {
     }
     else {
         printMessage('przegrywasz');
+        TemporaryResultComputer=1;
     }
+    ResultPlayer+=TemporaryResultPlayer;
+    ResultComputer+=TemporaryResultComputer;
+   
     return printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
   }
-  playerMove = argButtonName;
+ 
   
+  playerMove = argButtonName;
+  var result= ResultPlayer +'-'+ ResultComputer;
+  document.getElementById('result').innerHTML=result;
+
+
   randomNumber = Math.floor(Math.random() * 3 + 1);
   console.log('wylosowana liczba to: ' + randomNumber);
   computerMove = getMoveName(randomNumber);
@@ -66,6 +82,8 @@ function buttonClicked(argButtonName) {
   displayResult(playerMove, computerMove);
   //////////////
 }
+
+
 buttonRock = document.getElementById('button-rock');
 buttonRock.addEventListener('click', function(){ buttonClicked('kamień'); });
 
