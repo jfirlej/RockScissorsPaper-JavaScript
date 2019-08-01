@@ -36,18 +36,10 @@ function buttonClicked(argButtonName) {
    let TemporaryResultPlayer=0;
     let TemporaryResultComputer=0;
     console.log('wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
-    if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
+    if (argPlayerMove == 'papier' && argComputerMove == 'kamień' ||argPlayerMove == 'nożyce' && argComputerMove == 'papier'||argPlayerMove == 'kamień' && argComputerMove == 'nożyce') {
       printMessage('wygrywasz!');
       TemporaryResultPlayer=1;
     } 
-    else if(argPlayerMove == 'nożyce' && argComputerMove == 'papier') {
-      printMessage('wygrywasz');
-      TemporaryResultPlayer=1;
-    }
-    else if (argPlayerMove == 'kamień' && argComputerMove == 'nożyce'){
-      printMessage('wygrywasz!');
-      TemporaryResultPlayer=1;
-    }
     else if (argPlayerMove == argComputerMove)
     {
         printMessage('remis');
